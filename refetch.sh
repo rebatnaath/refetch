@@ -52,7 +52,7 @@ main() {
     echo
 
     # Printing system information with left padding
-    echo "$system_info" | awk '{ printf "    %s\n", $0 }'
+    echo "$system_info" | awk '{ printf "   %s\n", $0 }'
 }
 
 main
