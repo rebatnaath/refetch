@@ -6,7 +6,7 @@ Refetch is a simple and elegant system information retrieval tool written in Bas
 
 ## Features
 
-- Display basic system information in a Neofetch-inspired format.
+- Display basic system information.
 - Provides information such as hostname, operating system, kernel version, CPU, memory, disk usage, and uptime.
 
 ## Installation
