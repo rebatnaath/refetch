@@ -17,4 +17,4 @@ cd refetch
 ./install.sh
 ```
 
-it's still not perfect will add features later.
+For the it works displays everything properly. it's still not perfect will add features later.
