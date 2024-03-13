@@ -1,40 +1,58 @@
 #!/bin/bash
 
-# Function to display system information
-export PATH=$PATH:/home/rohamm/Documents/fetch
 display_system_info() {
     echo "System Information:"
     echo "-------------------"
-    echo "Hostname: $(hostname)"
-    echo "OS: $(uname -s)"
+    echo "OS: $(lsb_release -sd)"
     echo "Kernel Version: $(uname -r)"
-    echo "CPU: $(grep 'model name' /proc/cpuinfo | head -n 1 | cut -d ':' -f 2 | sed 's/^ *//')"
-    echo "Memory: $(free -h | awk '/^Mem/ {print $2}')"
-    echo "Disk Usage: $(df -h / | awk 'NR==2 {print $3 "/" $2 " (" $5 " used)"}')"
+    echo "Packages Installed: $(pacman -Qq | wc -l)"
+    echo "Shell: $(basename $SHELL)"
+    echo "RAM Usage: $(free -h | awk '/^Mem/ {print $3 " / " $2}')"
+    echo "Init Process: $(ps -p 1 -o comm=)"
     echo "Uptime: $(uptime -p)"
+    echo "Disk Usage: $(df -h / | awk 'NR==2 {print $3 " / " $2}')"
+    echo -e " \n"
 }
 
-# Function to display ASCII art
+
 display_ascii_art() {
-    echo "
- _______  _______  _______  _______    _______  _______  __   __  _______ 
-|       ||       ||       ||       |  |       ||   _   ||  |_|  ||       |
-|    ___||    ___||_     _||  _____|  |    ___||  |_|  ||       ||    ___|
-|   |___ |   |___   |   |  | |_____   |   |___ |       ||       ||   |___ 
-|    ___||    ___|  |   |  |_____  |  |    ___||       ||       ||    ___|
-|   |___ |   |___   |   |   _____| |  |   |___ |   _   || ||_|| ||   |___ 
-|_______||_______|  |___|  |_______|  |_______||__| |__||_|   |_||_______|
-                                                                           
-"
+    distro=$(lsb_release -si)  
+    case $distro in
+        Ubuntu)
+            cat ubuntu_ascii_art.txt
+            ;;
+        Debian)
+            cat debian_ascii_art.txt
+            ;;
+        Fedora)
+            cat fedora_ascii_art.txt
+            ;;
+        "Pop!_OS")
+            cat popos_ascii_art.txt
+            ;;
+        Arch)
+            cat arch_ascii_art.txt
+            ;;
+        EndeavourOS)
+            cat endeavouros_ascii_art.txt
+            ;;
+        *)
+            cat default_ascii_art.txt
+            ;;
+    esac
 }
 
-# Main function to display information
+
 main() {
     clear
-    display_ascii_art
-    display_system_info
+    ascii_art=$(display_ascii_art)
+    system_info=$(display_system_info)
+
+    echo "$ascii_art"
+    echo
+
+    # Printing system information with left padding
+    echo "$system_info" | awk '{ printf "    %s\n", $0 }'
 }
 
-# Call the main function
 main
-
