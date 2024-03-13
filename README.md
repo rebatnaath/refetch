@@ -2,7 +2,7 @@
 
 Refetch is a simple and elegant system information retrieval tool written in Bash.
 
-![Refetch Screenshot](screenshot.png)
+![Refetch Screenshot](refetch.png)
 
 ## Features
 
