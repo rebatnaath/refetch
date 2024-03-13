@@ -21,5 +21,4 @@ ln -s "$DESTINATION_DIR/$SCRIPT_NAME" "$DESTINATION_DIR/$SYMLINK_NAME"
 chmod +x "$DESTINATION_DIR/$SCRIPT_NAME"
 chmod +x "$DESTINATION_DIR/$SYMLINK_NAME"
 
-echo "Installation completed! You can now run 'refetch' from anywhere."
 
