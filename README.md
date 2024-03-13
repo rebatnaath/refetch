@@ -14,7 +14,7 @@ Refetch is a simple and elegant system information retrieval tool written in Bas
 ```bash
 git clone https://github.com/rebatnaath/refetch
 cd refetch
-chmod u+x install.sh
+chmod +x refetch.sh install.sh
 ./install.sh
 
 ```
