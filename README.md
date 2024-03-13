@@ -14,4 +14,6 @@ Refetch is a simple and elegant system information retrieval tool written in Bas
 To install Refetch, simply run the `install.sh` script provided in the repository:
 
 ```bash
+git clone https://github.com/rebatnaath/refetch
+cd refetch
 ./install.sh
